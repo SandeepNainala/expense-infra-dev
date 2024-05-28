@@ -1,3 +1,3 @@
-# expense-infra-dev
+# Expense Architecture
 
 ![img.png](img.png)
