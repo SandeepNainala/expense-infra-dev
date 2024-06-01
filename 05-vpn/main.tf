@@ -1,6 +1,6 @@
 resource "aws_key_pair" "vpn" {
   key_name   = "vpn"
-  public_key = ""
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0aMsOb7V7VW+b2FqvSX5Z8Zl1W73P8JsvopDbXDerw"
 }
 
 module "vpn" {
