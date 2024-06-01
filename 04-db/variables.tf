@@ -10,10 +10,10 @@ variable "common_tags" {
   default = {
     Project = "expense"
     Environment = "dev"
-    terraform = "true"
+    Terraform = "true"
   }
 }
 
 variable "zone_name" {
-  default = "devops71.cloud"
+  default = "devops91.cloud"
 }
