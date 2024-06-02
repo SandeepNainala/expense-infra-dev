@@ -16,7 +16,7 @@ module "backend" {
 }
 
 
-resource "null_resource" "cluster" {
+resource "null_resource" "backend" {
   triggers = {
     instance_id = module.backend.id  # this will be triggered everytime instanace is created
   }
@@ -31,6 +31,13 @@ resource "null_resource" "cluster" {
   provisioner "file" {
     source = "backend.sh"
     destination = "/tmp/backend.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/backend.sh",
+      "sudo sh /tmp/backend.sh"
+    ]
   }
 
 }
