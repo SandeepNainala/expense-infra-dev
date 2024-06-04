@@ -16,5 +16,5 @@ variable "common_tags" {
 }
 
 variable "zone_name" {
-  default = "devops91@cloud"
+  default = "devops91.cloud"
 }
