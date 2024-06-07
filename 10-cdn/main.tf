@@ -40,3 +40,44 @@ resource "aws_cloudfront_distribution" "web_cdn" {
     viewer_protocol_policy = "redirect-to-https"
     cache_policy_id  = data.aws_cloudfront_cache_policy.cache_enable.id
   }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "whitelist"
+      locations        = ["US", "IN", "GB", "DE"]
+    }
+  }
+
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "${var.project_name}-${var.environment}"
+    }
+  )
+
+  viewer_certificate {
+    acm_certificate_arn = data.aws_ssm_parameter.acm_certificate_arn.value
+    minimum_protocol_version = "TLSv1.2_2021"
+    ssl_support_method = "sni-only"
+  }
+}
+
+
+module "records" {
+  source  = "terraform-aws-modules/route53/aws//modules/records"
+  version = "~> 2.0"
+
+  zone_name = var.zone_name
+
+  records = [
+    {
+      name    = "web-cdn" #web-cdn.daws78s.online
+      type    = "A"
+      allow_overwrite = true
+      alias   = {
+        name    = aws_cloudfront_distribution.web_cdn.domain_name
+        zone_id = aws_cloudfront_distribution.web_cdn.hosted_zone_id
+      }
+    }
+  ]
+}
