@@ -16,7 +16,7 @@ module "backend" {
 }
 
 
-resource "null_resource" "backend" {
+resource "null_resource" "backend" {    # null resource will not create any resource but it will be used to trigger the script,local-exec,remote-exec etc
   triggers = {
     instance_id = module.backend.id  # this will be triggered everytime instanace is created
   }
