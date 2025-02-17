@@ -67,7 +67,7 @@ resource "null_resource" "backend_delete" {
   }
 
   provisioner "local-exec" {
-    command = "aws ec2 terminate-instance --instance-ids ${module.backend.id}"
+    command = "aws ec2 terminate-instance --instance-ids ${module.backend.id}"  # aws cli command to terminate the instance
   }
   depends_on = [ aws_ami_from_instance.backend ]
 }
