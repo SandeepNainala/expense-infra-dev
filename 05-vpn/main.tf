@@ -1,4 +1,3 @@
-/*
 resource "aws_key_pair" "vpn" {
   key_name   = "vpn"
   # you can paste the public key directly like this
@@ -24,4 +23,4 @@ module "vpn" {
       Name = "${var.project_name}-${var.environment}-vpn"
     }
   )
-}*/
+}
