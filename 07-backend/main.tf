@@ -87,7 +87,7 @@ resource "aws_lb_target_group" "backend" {
   }
 }
 
-resource "aws_launch_template" "backend" {
+resource "aws_launch_template" "backend" {    # aws launch template is used to create the template for the instance
   name = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
 
   image_id = aws_ami_from_instance.backend.id
