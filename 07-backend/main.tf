@@ -121,7 +121,7 @@ resource "aws_autoscaling_group" "backend" {
     id  = aws_launch_template.backend.id
     version = "$Latest"
   }
-  vpc_zone_identifier       = [split("," , data.aws_ssm_parameter.private_subnet_ids.value)]
+  vpc_zone_identifier       = [split("," , data.aws_ssm_parameter.private_subnet_ids.value)] # split function is used to split the string into list of strings based on the delimiter ","
 
   instance_refresh {
     strategy = "Rolling"
