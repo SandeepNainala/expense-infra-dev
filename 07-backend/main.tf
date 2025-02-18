@@ -33,7 +33,7 @@ resource "null_resource" "backend" {    # null resource will not create any reso
     destination = "/tmp/${var.common_tags.Component}.sh"
   }
 
-  provisioner "remote-exec" {
+  provisioner "remote-exec" {       # remote-exec provisioner is used to execute the script on the remote machine
     inline = [
       "chmod +x /tmp/${var.common_tags.Component}.sh",
       "sudo sh /tmp/${var.common_tags.Component}.sh  ${var.common_tags.Component} ${var.environment}"
