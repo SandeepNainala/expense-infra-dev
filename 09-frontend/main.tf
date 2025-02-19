@@ -1,3 +1,4 @@
+/*
 module "frontend" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   name = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
@@ -169,16 +170,18 @@ resource "aws_lb_listener_rule" "frontend" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.frontend.arn
   }
+*/
 /*
   condition {
     path_pattern {
       values = ["backend.app-${var.environment}.${var.zone_name}"]
     }
-  }*/
+  }*//*
+
 
   condition {
     host_header {
       values = ["web-${var.environment}.${var.zone_name}"]   # host path backend.devops91.cloud
     }
   }
-}
+}*/
