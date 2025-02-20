@@ -1,3 +1,4 @@
+/*
 resource "aws_cloudfront_distribution" "web_cdn" {
   origin {
     domain_name = "web-${var.environment}-${var.zone_name}"  #web-dev.devops91.cloud
@@ -9,6 +10,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
       origin_ssl_protocols   = ["TLSv1.2", "TLSv1.3"]
     }
   }
+*/
 
   enabled =  true
   aliases = ["web-${var.common_tags.Component}-${var.zone_name}"]  #web-cdn.devops91.cloud
