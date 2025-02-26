@@ -1,3 +1,4 @@
+/*
 resource "aws_cloudfront_distribution" "web_cdn" {
   origin {
     domain_name = "web-${var.environment}-${var.zone_name}"  #web-dev.devops91.cloud
@@ -81,3 +82,4 @@ module "records" {
     }
   ]
 }
+*/
